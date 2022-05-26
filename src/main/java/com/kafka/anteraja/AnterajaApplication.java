@@ -16,7 +16,9 @@ public class AnterajaApplication {
 	@Bean
 	CommandLineRunner commandLineRunner(KafkaTemplate<String, String>kafkaTemplate) {
 		return args -> {
-			kafkaTemplate.send("anteraja", "test kafka");
+			for(int i = 0;i < 100;i++) {
+				kafkaTemplate.send("anteraja", "Event kafka ke-" + i);
+			}
 		}; 
 	}
 
